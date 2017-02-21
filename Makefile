@@ -2,8 +2,9 @@ PROGRAM_NAME := $(shell basename `pwd`)
 
 # compiler
 CXX := clang++
-CXXFLAGS := -O2 -Wextra
-LIBS := externals/BitboardCA-embedded/library/libbbca.a
+CXXFLAGS := -O2 -Wextra -I/usr/local/include/SDL2 -D_THREAD_SAFE -Iexternals/BitboardCA-embedded/include
+LIBS := externals/BitboardCA-embedded/library/libbbca.a \
+		-L/usr/local/lib -lSDL2
 
 # directory
 OUT_DIR := out
