@@ -9,9 +9,9 @@ class Game : SystemEvent
 {
 private:
   bool _quit;
-  BCA::GenerationOuterTotalisticCA * _pCA;
-  InnerCAForStarwars * _pStarwars;
-  //CodsCA * _pCA;
+  //BCA::GenerationOuterTotalisticCA * _pCA;
+  //InnerCAForStarwars * _pStarwars;
+  WireworldCA * _pCA;
 
   void Update();
   void Render();

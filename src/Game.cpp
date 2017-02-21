@@ -5,12 +5,20 @@ void Game::Initialize()
   _renderer.Initialize();
 
 
+/*
   _pCA = new BCA::GenerationOuterTotalisticCA(480, 400, 4);
   _pStarwars = new InnerCAForStarwars(_pCA->GetSizeX(), _pCA->GetSizeY());
   _pCA->SetInnerCAInstance(_pStarwars);
-//  _pCA = new CodsCA(480, 400, 4);
+  */
+  _pCA = new WireworldCA(480, 400);
 
-  _pCA->Randomize();
+  for (int x = 10; x < 50; x ++)
+    _pCA->SetCellState(x, 90, 1);
+  for (int y = 0; y < 500; y ++)
+    _pCA->SetCellState(49, y, 1);
+  _pCA->SetCellState(9, 90, 2);
+
+  //_pCA->Randomize();
 }
 
 void Game::MainLoop()
@@ -56,7 +64,7 @@ Color Game::GetColor(int state)
   switch (state)
   {
     case 0: return Color(0, 0, 0, 255);
-    case 1: return Color(255, 0, 0, 255);
+    case 1: return Color(127, 0, 0, 255);
     case 2: return Color(255, 0, 0, 255);
     case 3: return Color(255, 255, 0, 255);
   }
@@ -65,7 +73,6 @@ Color Game::GetColor(int state)
 
 Game::~Game()
 {
-  delete _pStarwars;
+  //delete _pStarwars;
   delete _pCA;
-  //delete _pCodd;
 }
