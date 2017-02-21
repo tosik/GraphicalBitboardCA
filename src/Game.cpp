@@ -8,6 +8,7 @@ void Game::Initialize()
   _pCA = new BCA::GenerationOuterTotalisticCA(480, 400, 4);
   _pStarwars = new InnerCAForStarwars(_pCA->GetSizeX(), _pCA->GetSizeY());
   _pCA->SetInnerCAInstance(_pStarwars);
+//  _pCA = new CodsCA(480, 400, 4);
 
   _pCA->Randomize();
 }
@@ -66,4 +67,5 @@ Game::~Game()
 {
   delete _pStarwars;
   delete _pCA;
+  //delete _pCodd;
 }

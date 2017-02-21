@@ -46,3 +46,7 @@ endif
 .PHONY : clean
 clean:
 	$(RM) -r $(OUT_DIR)
+
+.PHONY: bitboardca
+bitboardca:
+	cd externals/BitboardCA-embedded/ && make && cd -

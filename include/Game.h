@@ -11,6 +11,7 @@ private:
   bool _quit;
   BCA::GenerationOuterTotalisticCA * _pCA;
   InnerCAForStarwars * _pStarwars;
+  //CodsCA * _pCA;
 
   void Update();
   void Render();

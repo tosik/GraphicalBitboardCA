@@ -2,11 +2,10 @@
 
 #include <cstddef>
 #include "GenerationOuterTotalisticCa.h"
+#include "NeumannOuterTotalisticCa.h"
 
 namespace BCA = BitboardCA;
 
-// your class
-// define user rules on like this class.
 class InnerCAForStarwars
   : public BCA::OuterTotalisticCA
 {
@@ -25,5 +24,23 @@ class InnerCAForStarwars
     {
       // starwars
       return ( board & ( s3 | s4 | s5 ) ) | ( ~board & s2 );
+    }
+};
+
+class CoddsCA
+  : public BCA::MultiStateOuterTotalisticCA
+{
+  public:
+    CoddsCA(std::size_t size_x, std::size_t size_y)
+      : BCA::MultiStateOuterTotalisticCA(size_x, size_y, 8)
+    {
+    }
+
+  protected:
+    BCA::Bitboard Rule(
+        BCA::Bitboard board,
+        BCA::Bitboard s0, BCA::Bitboard s1, BCA::Bitboard s2, BCA::Bitboard s3)
+    {
+      //return ( board & ( s3 | s4 | s5 ) ) | ( ~board & s2 );
     }
 };
