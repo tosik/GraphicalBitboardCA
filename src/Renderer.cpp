@@ -51,3 +51,13 @@ void Renderer::DrawPoint(int x, int y)
   SDL_RenderDrawPoint(_renderer, x, y);
 }
 
+void Renderer::DrawRectangle(int x, int y, int width, int height)
+{
+  SDL_Rect rect;
+  rect.x = x;
+  rect.y = y;
+  rect.w = width;
+  rect.h = height;
+  SDL_RenderFillRect(_renderer, &rect);
+}
+

@@ -47,7 +47,7 @@ void Game::Render()
     {
       int state = _pCA->GetCellState(x, y);
       _renderer.SetColor(GetColor(state));
-      _renderer.DrawPoint(x, y);
+      _renderer.DrawRectangle(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
     }
   }
 
