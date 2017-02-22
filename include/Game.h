@@ -10,9 +10,9 @@ class Game : SystemEvent
 {
 private:
   bool _quit;
-  //std::unique_ptf<BCA::GenerationOuterTotalisticCA> _pCA;
-  //std::unique_ptr<InnerCAForStarwars> _pStarwars;
-  std::unique_ptr<WireworldCA> _pCA;
+  std::unique_ptr<BCA::GenerationOuterTotalisticCA> _pCA;
+  std::shared_ptr<InnerCAForStarwars> _pStarwars;
+  //std::unique_ptr<WireworldCA> _pCA;
 
 #define _GAME_COL Color(0, 0, 0, 0)
   Color _colorScheme[16] = {

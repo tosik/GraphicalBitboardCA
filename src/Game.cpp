@@ -4,15 +4,19 @@ void Game::Initialize()
 {
   _renderer.Initialize("Graphical Bitboard CA");
 
-  /*
   {
     _pCA.reset(new BCA::GenerationOuterTotalisticCA(480, 400, 4));
     _pStarwars.reset(new InnerCAForStarwars(_pCA->GetSizeX(), _pCA->GetSizeY()));
-    _pCA->SetInnerCAInstance(_pStarwars);
+    _pCA->SetInnerCAInstance(_pStarwars.get());
     _pCA->Randomize();
-  }
-  */
 
+    _colorScheme[0] = Color(0, 0, 0, 255); // space
+    _colorScheme[1] = Color(127, 0, 0, 255); // 1
+    _colorScheme[2] = Color(255, 0, 0, 255); // 2
+    _colorScheme[3] = Color(255, 255, 0, 255); // 3
+  }
+
+/*
   {
     _pCA.reset(new WireworldCA(480, 400));
     for (int x = 10; x < 50; x ++)
@@ -26,6 +30,7 @@ void Game::Initialize()
     _colorScheme[2] = Color(0, 0, 255, 255); // electron head
     _colorScheme[3] = Color(255, 0, 0, 255); // electron tail
   }
+  */
 }
 
 void Game::MainLoop()
