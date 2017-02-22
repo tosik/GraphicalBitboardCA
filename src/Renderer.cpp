@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include "Renderer.h"
 
-int Renderer::Initialize()
+int Renderer::Initialize(std::string title)
 {
   if (SDL_Init(SDL_INIT_VIDEO) != 0)
   {
@@ -11,7 +11,7 @@ int Renderer::Initialize()
     return 1;
   }
 
-  SDL_Window *win = SDL_CreateWindow("Hello World!", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+  SDL_Window *win = SDL_CreateWindow(title.c_str(), 100, 100, 640, 480, SDL_WINDOW_SHOWN);
   if (win == nullptr)
   {
     std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;

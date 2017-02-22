@@ -2,7 +2,7 @@
 
 void Game::Initialize()
 {
-  _renderer.Initialize();
+  _renderer.Initialize("Graphical Bitboard CA");
 
 
 /*
