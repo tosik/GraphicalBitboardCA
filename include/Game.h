@@ -26,5 +26,5 @@ public:
   Game() : _quit(false) {}
   ~Game();
 
-  const int CELL_SIZE = 2;
+  const static int CELL_SIZE = 2;
 };
