@@ -2,6 +2,7 @@
 #include "Renderer.h"
 #include "GenerationOuterTotalisticCA.h"
 #include "CellularAutomataRules.h"
+#include "Rules/IRule.h"
 #include <memory>
 
 namespace BCA = BitboardCA;
@@ -10,17 +11,9 @@ class Game : SystemEvent
 {
 private:
   bool _quit;
-  std::unique_ptr<BCA::GenerationOuterTotalisticCA> _pCA;
-  std::shared_ptr<InnerCAForStarwars> _pStarwars;
-  //std::unique_ptr<WireworldCA> _pCA;
-
-#define _GAME_COL Color(0, 0, 0, 0)
-  Color _colorScheme[16] = {
-    _GAME_COL,_GAME_COL,_GAME_COL,_GAME_COL,
-    _GAME_COL,_GAME_COL,_GAME_COL,_GAME_COL,
-    _GAME_COL,_GAME_COL,_GAME_COL,_GAME_COL,
-    _GAME_COL,_GAME_COL,_GAME_COL,_GAME_COL};
-#undef _GAME_COL
+  std::unique_ptr<BCA::IBasicBitboardCA> _ca;
+  std::unique_ptr<IRule> _rule;
+  std::vector<Color> _colorScheme;
 
   void Update();
   void Render();
@@ -32,8 +25,7 @@ public:
   void Initialize();
   void MainLoop();
 
-  Game() : _quit(false) {}
-  ~Game();
+  Game(std::unique_ptr<IRule> rule);
 
   const static int CELL_SIZE = 2;
 };
