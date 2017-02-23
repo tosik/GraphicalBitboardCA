@@ -2,7 +2,7 @@ PROGRAM_NAME := $(shell basename `pwd`)
 
 # compiler
 CXX := clang++
-CXXFLAGS := -O2 -Wextra -I/usr/local/include/SDL2 -D_THREAD_SAFE -Iexternals/BitboardCA-embedded/include
+CXXFLAGS := -O2 -std=c++14 -Wextra -I/usr/local/include/SDL2 -D_THREAD_SAFE -Iexternals/BitboardCA-embedded/include
 LIBS := externals/BitboardCA-embedded/library/libbbca.a \
 		-L/usr/local/lib -lSDL2
 
