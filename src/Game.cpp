@@ -3,7 +3,7 @@
 Game::Game(std::unique_ptr<IRule> rule)
     : _quit(false)
     , _rule(std::move(rule))
-    , _ca(std::move(rule->CreateCA()))
+    , _ca(std::move(_rule->CreateCA()))
     , _colorScheme(std::move(_rule->GetColorScheme()))
 {
 }

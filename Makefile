@@ -1,9 +1,11 @@
 PROGRAM_NAME := $(shell basename `pwd`)
 
 # compiler
+DEBUG := -g
+RELEASE := #-O2
 CXX := clang++
-CXXFLAGS := -O2 -std=c++14 -Wextra -I/usr/local/include/SDL2 -D_THREAD_SAFE -Iexternals/BitboardCA-embedded/include
-LIBS := externals/BitboardCA-embedded/library/libbbca.a \
+CXXFLAGS := $(RELEASE) -std=c++14 -Wextra -I/usr/local/include/SDL2 -D_THREAD_SAFE -Iexternals/BitboardCA-embedded/include $(DEBUG)
+LIBS := externals/BitboardCA-embedded/library/libbbcad.a \
 		-L/usr/local/lib -lSDL2
 
 # directory

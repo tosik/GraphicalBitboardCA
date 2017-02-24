@@ -11,8 +11,8 @@ class Game : SystemEvent
 {
 private:
   bool _quit;
-  std::unique_ptr<BCA::IBasicBitboardCA> _ca;
   std::unique_ptr<IRule> _rule;
+  std::unique_ptr<BCA::IBasicBitboardCA> _ca;
   std::vector<Color> _colorScheme;
 
   void Update();
