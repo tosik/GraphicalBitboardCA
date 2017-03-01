@@ -26,7 +26,7 @@ OBJS := $(addprefix $(OBJ_DIR)/,$(SOURCE_NAMES:.cpp=.o))
 DEPENDS := $(addprefix $(DEPEND_DIR)/,$(SOURCE_NAMES:.cpp=.depend))
 
 .PHONY: all
-all: $(DEPENDS) $(PROGRAM)
+all: bitboardca $(DEPENDS) $(PROGRAM)
 $(PROGRAM): $(OBJS)
 	@mkdir -p $(PROGRAM_DIR)
 	$(CXX) $(CXXFLAGS) $(LIBS) $^ -o $(PROGRAM)
@@ -48,6 +48,7 @@ endif
 .PHONY : clean
 clean:
 	$(RM) -r $(OUT_DIR)
+	cd externals/BitboardCA-embedded/ && make clean && cd -
 
 .PHONY: bitboardca
 bitboardca:
