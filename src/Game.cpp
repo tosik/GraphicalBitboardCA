@@ -34,13 +34,14 @@ void Game::Render()
 {
     _renderer.Clear();
 
-    for (int y = 0; y < _ca->GetSizeY(); y++)
+    for (unsigned int y = 0; y < _ca->GetSizeY(); y++)
     {
-        for (int x = 0; x < _ca->GetSizeX(); x++)
+        for (unsigned int x = 0; x < _ca->GetSizeX(); x++)
         {
             int state = _ca->GetCellState(x, y);
             _renderer.SetColor(GetColor(state));
-            _renderer.DrawRectangle(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+            //_renderer.DrawRectangle(x * CELL_SIZE, y * CELL_SIZE, CELL_SIZE, CELL_SIZE);
+            _renderer.DrawPoint(x, y);
         }
     }
 
