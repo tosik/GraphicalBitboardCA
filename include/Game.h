@@ -3,6 +3,7 @@
 #include "GenerationOuterTotalisticCA.h"
 #include "CellularAutomataRules.h"
 #include "Rules/IRule.h"
+#include "Position.h"
 #include <memory>
 
 namespace BCA = BitboardCA;
@@ -12,6 +13,7 @@ class Game : SystemEvent
 private:
   bool _quit;
   bool _isMouseDown;
+  Position _lastDrawnLineEnd;
 
   std::unique_ptr<IRule> _rule;
   std::unique_ptr<BCA::IBasicBitboardCA> _ca;
@@ -32,5 +34,5 @@ public:
 
   Game(std::unique_ptr<IRule> rule);
 
-  const static int CELL_SIZE = 2;
+  const static int CELL_SIZE = 1;
 };

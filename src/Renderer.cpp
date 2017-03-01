@@ -11,7 +11,7 @@ int Renderer::Initialize(std::string title)
     return 1;
   }
 
-  SDL_Window *win = SDL_CreateWindow(title.c_str(), 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+  SDL_Window *win = SDL_CreateWindow(title.c_str(), 100, 100, 640 * 2, 480 * 2, SDL_WINDOW_SHOWN);
   if (win == nullptr)
   {
     std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;

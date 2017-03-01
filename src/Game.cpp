@@ -1,10 +1,12 @@
 #include "Game.h"
+#include "Bresenham.h"
 
 Game::Game(std::unique_ptr<IRule> rule)
     : _quit(false)
     , _rule(std::move(rule))
     , _ca(std::move(_rule->CreateCA()))
     , _colorScheme(std::move(_rule->GetColorScheme()))
+    , _lastDrawnLineEnd(Position(0, 0))
 {
 }
 
@@ -52,7 +54,8 @@ void Game::OnQuit()
 
 void Game::OnMouseButtonDown(const SDL_MouseButtonEvent button)
 {
-    _ca->SetCellState(button.x / CELL_SIZE, button.y / CELL_SIZE, 3);
+    _lastDrawnLineEnd = Position(button.x / CELL_SIZE, button.y / CELL_SIZE);
+    _ca->SetCellState(_lastDrawnLineEnd.X, _lastDrawnLineEnd.Y, 3);
     _isMouseDown = true;
 }
 
@@ -65,7 +68,14 @@ void Game::OnMouseMotion(const SDL_MouseMotionEvent motion)
 {
     if (_isMouseDown)
     {
-        _ca->SetCellState(motion.x / CELL_SIZE, motion.y / CELL_SIZE, 3);
+        auto pos = Position(motion.x / CELL_SIZE, motion.y / CELL_SIZE);
+        auto line = Bresenham::GetPoints(_lastDrawnLineEnd.X, _lastDrawnLineEnd.Y, pos.X, pos.Y);
+        _lastDrawnLineEnd = pos;
+
+        for (auto pos : line)
+        {
+            _ca->SetCellState(pos.X, pos.Y, 3);
+        }
     }
 }
 

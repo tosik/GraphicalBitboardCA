@@ -7,7 +7,7 @@ class Starwars : public IRule
 public:
     std::unique_ptr<BCA::IBasicBitboardCA> CreateCA()
     {
-        std::unique_ptr<BCA::GenerationOuterTotalisticCA> dest(new BCA::GenerationOuterTotalisticCA(480, 400, 4));
+        std::unique_ptr<BCA::GenerationOuterTotalisticCA> dest(new BCA::GenerationOuterTotalisticCA(640 * 2, 480 * 2, 4));
         // FIXME: leaks memories
         InnerCAForStarwars * starwars = new InnerCAForStarwars(dest->GetSizeX(), dest->GetSizeY());
         dest->SetInnerCAInstance(starwars);
