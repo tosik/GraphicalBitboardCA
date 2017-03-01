@@ -11,6 +11,8 @@ class Game : SystemEvent
 {
 private:
   bool _quit;
+  bool _isMouseDown;
+
   std::unique_ptr<IRule> _rule;
   std::unique_ptr<BCA::IBasicBitboardCA> _ca;
   std::vector<Color> _colorScheme;
@@ -18,6 +20,9 @@ private:
   void Update();
   void Render();
   void OnQuit();
+  void OnMouseButtonDown(const SDL_MouseButtonEvent button) ;
+  void OnMouseButtonUp(const SDL_MouseButtonEvent button) ;
+  void OnMouseMotion(const SDL_MouseMotionEvent motion);
   Color GetColor(int state);
 
 public:

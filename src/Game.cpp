@@ -50,6 +50,25 @@ void Game::OnQuit()
     _quit = true;
 }
 
+void Game::OnMouseButtonDown(const SDL_MouseButtonEvent button)
+{
+    _ca->SetCellState(button.x / CELL_SIZE, button.y / CELL_SIZE, 3);
+    _isMouseDown = true;
+}
+
+void Game::OnMouseButtonUp(const SDL_MouseButtonEvent button)
+{
+    _isMouseDown = false;
+}
+
+void Game::OnMouseMotion(const SDL_MouseMotionEvent motion)
+{
+    if (_isMouseDown)
+    {
+        _ca->SetCellState(motion.x / CELL_SIZE, motion.y / CELL_SIZE, 3);
+    }
+}
+
 Color Game::GetColor(int state)
 {
     return _colorScheme[state];
